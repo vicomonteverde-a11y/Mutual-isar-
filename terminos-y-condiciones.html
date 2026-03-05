@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos y Condiciones - MUTUAL ISAR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; overflow-x: hidden; }
+body { font-family: 'DM Sans', sans-serif; color: #1a2332; background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+:root {
+  --navy: #1a5276; --navy-light: #2471a3; --teal: #17a8a0; --teal-light: #1dd3c6; --teal-bg: #e8faf9;
+  --gray-50: #f8fafc; --gray-100: #f1f5f9; --gray-200: #e2e8f0; --gray-300: #cbd5e1; --gray-400: #94a3b8; --gray-500: #64748b; --gray-600: #475569; --gray-700: #334155; --gray-800: #1e293b; --gray-900: #0f172a;
+  --white: #fff; --shadow-md: 0 4px 20px rgba(0,0,0,0.08); --radius: 12px; --radius-lg: 20px; --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+a { text-decoration: none; color: inherit; }
+
+/* NAVBAR */
+.navbar { position: relative; z-index: 100; background: rgba(255,255,255,0.97); border-bottom: 1px solid rgba(0,0,0,0.06); box-shadow: var(--shadow-md); }
+.navbar-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.navbar-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.15rem; color: var(--navy); }
+.logo-mark { width: 38px; height: 38px; background: linear-gradient(135deg, var(--navy), var(--teal)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.5px; }
+.navbar-logo span { color: var(--teal); font-weight: 500; }
+.nav-back { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; color: var(--gray-600); transition: var(--transition); }
+.nav-back:hover { color: var(--navy); background: var(--gray-100); }
+.nav-back svg { width: 18px; height: 18px; }
+
+/* HERO HEADER */
+.page-hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--teal) 100%); padding: 60px 0; position: relative; overflow: hidden; }
+.page-hero::before { content:''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(23,168,160,0.15) 0%, transparent 70%); border-radius: 50%; }
+.page-hero-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+.page-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 600; color: var(--white); margin-bottom: 12px; }
+.page-hero p { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 600px; }
+.page-hero .updated { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+.page-hero .updated svg { width: 14px; height: 14px; }
+
+/* CONTENT */
+.content-wrapper { max-width: 860px; margin: 0 auto; padding: 60px 24px 80px; }
+
+.legal-section { margin-bottom: 40px; }
+.legal-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--teal-bg);
+}
+.legal-section h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.legal-section p {
+  color: var(--gray-600);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.legal-section ul {
+  list-style: none;
+  margin: 12px 0 16px;
+  padding: 0;
+}
+.legal-section ul li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--gray-600);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.legal-section ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  background: var(--teal);
+  border-radius: 50%;
+}
+
+.legal-highlight {
+  background: var(--teal-bg);
+  border-left: 4px solid var(--teal);
+  padding: 20px 24px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 20px 0;
+}
+.legal-highlight p { color: var(--gray-700); margin-bottom: 0; }
+
+.legal-index {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 48px;
+}
+.legal-index h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 14px;
+  margin-top: 0;
+}
+.legal-index ol {
+  list-style: none;
+  counter-reset: toc;
+  padding: 0;
+  margin: 0;
+  columns: 2;
+  column-gap: 32px;
+}
+.legal-index ol li {
+  counter-increment: toc;
+  margin-bottom: 8px;
+}
+.legal-index ol li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+.legal-index ol li a::before {
+  content: counter(toc) ".";
+  color: var(--teal);
+  font-weight: 600;
+  min-width: 20px;
+}
+.legal-index ol li a:hover { color: var(--teal); }
+
+/* FOOTER MINI */
+.footer-mini {
+  background: var(--gray-900);
+  padding: 30px 0;
+  text-align: center;
+  color: var(--gray-400);
+  font-size: 0.85rem;
+}
+.footer-mini a { color: var(--teal-light); transition: var(--transition); }
+.footer-mini a:hover { color: var(--white); }
+
+@media (max-width: 768px) {
+  .page-hero { padding: 40px 0; }
+  .page-hero h1 { font-size: 2rem; }
+  .page-hero p { font-size: 1rem; }
+  .content-wrapper { padding: 40px 20px 60px; }
+  .legal-section h2 { font-size: 1.25rem; }
+  .legal-index ol { columns: 1; }
+  .navbar-inner { height: 58px; }
+}
+@media (max-width: 480px) {
+  .page-hero h1 { font-size: 1.6rem; }
+  .content-wrapper { padding: 32px 16px 50px; }
+  .legal-highlight { padding: 16px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/" class="navbar-logo">
+      <div class="logo-mark">ISAR</div>
+      MUTUAL <span>ISAR</span>
+    </a>
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Volver al inicio
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <h1>Términos y Condiciones</h1>
+    <p>Condiciones generales que regulan la relación entre MUTUAL ISAR y sus asociados.</p>
+    <div class="updated">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Última actualización: Marzo 2026
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrapper">
+
+  <!-- ÍNDICE -->
+  <div class="legal-index">
+    <h3>Índice</h3>
+    <ol>
+      <li><a href="#s1">Identificación de la entidad</a></li>
+      <li><a href="#s2">Objeto y alcance</a></li>
+      <li><a href="#s3">Definiciones</a></li>
+      <li><a href="#s4">Asociación y requisitos</a></li>
+      <li><a href="#s5">Cuota social</a></li>
+      <li><a href="#s6">Ayudas económicas</a></li>
+      <li><a href="#s7">Servicios y beneficios</a></li>
+      <li><a href="#s8">Acuerdos institucionales</a></li>
+      <li><a href="#s9">Código de descuento en haberes</a></li>
+      <li><a href="#s10">Derechos del asociado</a></li>
+      <li><a href="#s11">Obligaciones del asociado</a></li>
+      <li><a href="#s12">Mora e incumplimiento</a></li>
+      <li><a href="#s13">Baja y desvinculación</a></li>
+      <li><a href="#s14">Protección de datos personales</a></li>
+      <li><a href="#s15">Propiedad intelectual</a></li>
+      <li><a href="#s16">Uso del sitio web</a></li>
+      <li><a href="#s17">Limitación de responsabilidad</a></li>
+      <li><a href="#s18">Modificaciones</a></li>
+      <li><a href="#s19">Legislación aplicable y jurisdicción</a></li>
+      <li><a href="#s20">Contacto</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <div class="legal-section" id="s1">
+    <h2>1. Identificación de la entidad</h2>
+    <p>INTEGRACIÓN SOLIDARIA DE AYUDA RECÍPROCA (en adelante, "MUTUAL ISAR", "la Mutual" o "ISAR") es una asociación mutual constituida de conformidad con la Ley Nacional de Mutualidades N.º 20.321 y sus normas complementarias, inscripta ante el Instituto Nacional de Asociativismo y Economía Social (INAES).</p>
+    <p>Domicilio legal: Av. Córdoba 890, 5to piso, Ciudad Autónoma de Buenos Aires, República Argentina.</p>
+    <p>Correo electrónico: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="147d7a727b547961606175787d6775663a777b79">[email&#160;protected]</a></p>
+  </div>
+
+  <!-- 2 -->
+  <div class="legal-section" id="s2">
+    <h2>2. Objeto y alcance</h2>
+    <p>Los presentes Términos y Condiciones (en adelante, los "Términos") regulan la relación entre MUTUAL ISAR y toda persona que acceda al sitio web www.mutualisar.com (en adelante, el "Sitio"), se asocie a la Mutual o utilice cualquiera de sus prestaciones, servicios o ayudas económicas.</p>
+    <p>El acceso al Sitio y/o la solicitud de asociación implican la aceptación plena e incondicional de estos Términos. Si usted no está de acuerdo con alguna de sus disposiciones, le solicitamos que se abstenga de utilizar el Sitio y los servicios ofrecidos.</p>
+  </div>
+
+  <!-- 3 -->
+  <div class="legal-section" id="s3">
+    <h2>3. Definiciones</h2>
+    <p>A los efectos de los presentes Términos, se entenderá por:</p>
+    <ul>
+      <li><strong>Asociado:</strong> toda persona física que haya completado el proceso de asociación a MUTUAL ISAR, abone regularmente su cuota social y se encuentre en pleno goce de sus derechos mutuales.</li>
+      <li><strong>Ayuda Económica:</strong> toda prestación dineraria otorgada por la Mutual a sus asociados en carácter de préstamo personal, sujeta a las condiciones particulares de cada línea de asistencia.</li>
+      <li><strong>Acuerdo Institucional:</strong> convenio celebrado entre MUTUAL ISAR y una organización pública o privada, mediante el cual se habilita el acceso de los empleados o integrantes de dicha organización a las prestaciones de la Mutual.</li>
+      <li><strong>Código de Descuento:</strong> mecanismo de retención automática de cuotas sobre los haberes del asociado, autorizado por el empleador en el marco de un acuerdo institucional vigente.</li>
+      <li><strong>Servicios:</strong> prestaciones no dinerarias, beneficios, descuentos y ventajas que la Mutual ofrece o gestiona a favor de sus asociados.</li>
+    </ul>
+  </div>
+
+  <!-- 4 -->
+  <div class="legal-section" id="s4">
+    <h2>4. Asociación y requisitos</h2>
+    <p>Podrán asociarse a MUTUAL ISAR todas las personas físicas mayores de 18 años que pertenezcan a una organización con la cual la Mutual mantenga un acuerdo institucional vigente, o que cumplan con los requisitos que la Mutual establezca para la incorporación directa.</p>
+    <p>Para asociarse, el solicitante deberá:</p>
+    <ul>
+      <li>Completar el formulario de solicitud de asociación con datos personales veraces y actualizados.</li>
+      <li>Presentar la documentación requerida por la Mutual (DNI, recibo de haberes, y/o la que se solicite según el caso).</li>
+      <li>Aceptar los presentes Términos y Condiciones, el Estatuto Social y el Reglamento Interno de la Mutual.</li>
+      <li>Abonar la cuota de ingreso, si correspondiere.</li>
+    </ul>
+    <p>MUTUAL ISAR se reserva el derecho de aceptar o rechazar solicitudes de asociación conforme a los criterios internos de evaluación y las normas aplicables, sin obligación de expresar causa.</p>
+  </div>
+
+  <!-- 5 -->
+  <div class="legal-section" id="s5">
+    <h2>5. Cuota social</h2>
+    <p>Todo asociado se obliga al pago de una cuota social periódica, cuyo monto y periodicidad serán fijados por el Consejo Directivo de la Mutual y comunicados oportunamente. El pago de la cuota social es condición indispensable para el goce de los derechos y prestaciones mutuales.</p>
+    <p>La cuota social podrá ser debitada mediante código de descuento en haberes, débito automático, u otros medios de pago habilitados por la Mutual. La falta de pago de tres (3) cuotas sociales consecutivas podrá dar lugar a la suspensión de los derechos del asociado, previa intimación conforme al procedimiento estatutario.</p>
+  </div>
+
+  <!-- 6 -->
+  <div class="legal-section" id="s6">
+    <h2>6. Ayudas económicas</h2>
+    <div class="legal-highlight">
+      <p>Las ayudas económicas constituyen el eje central de la actividad de MUTUAL ISAR. Se otorgan exclusivamente a asociados activos en el marco de los acuerdos institucionales vigentes.</p>
+    </div>
+    <h3>6.1. Condiciones generales</h3>
+    <p>Las ayudas económicas serán otorgadas previa evaluación crediticia del asociado solicitante, considerando su capacidad de pago, antigüedad en la organización con la cual la Mutual mantiene acuerdo, historial crediticio y demás parámetros que la Mutual determine. El otorgamiento de una ayuda económica no genera derecho alguno a obtener futuras prestaciones.</p>
+    <h3>6.2. Montos, plazos y tasas</h3>
+    <p>Los montos máximos, plazos de devolución, tasas de interés compensatorio, gastos administrativos y demás condiciones financieras de cada línea de ayuda económica serán informados al asociado previo a la formalización del préstamo. Las condiciones particulares quedarán plasmadas en el instrumento contractual que el asociado suscriba al momento de aceptar la ayuda.</p>
+    <h3>6.3. Desembolso</h3>
+    <p>Una vez aprobada la solicitud y firmada la documentación correspondiente, la Mutual procederá a acreditar el monto de la ayuda económica en la cuenta bancaria informada por el asociado, o mediante el mecanismo que se acuerde en cada caso.</p>
+    <h3>6.4. Devolución</h3>
+    <p>La devolución de las ayudas económicas se realizará mediante cuotas fijas mensuales y consecutivas, descontadas directamente de los haberes del asociado a través del código de descuento, salvo que se establezca una modalidad alternativa. En caso de que el descuento no pudiera efectuarse por cualquier motivo, el asociado deberá arbitrar los medios para realizar el pago por las vías alternativas habilitadas por la Mutual.</p>
+    <h3>6.5. Cancelación anticipada</h3>
+    <p>El asociado podrá solicitar la cancelación anticipada total o parcial de su ayuda económica en cualquier momento, sin penalidades, abonando el capital adeudado más los intereses devengados hasta la fecha de cancelación.</p>
+  </div>
+
+  <!-- 7 -->
+  <div class="legal-section" id="s7">
+    <h2>7. Servicios y beneficios</h2>
+    <p>MUTUAL ISAR podrá ofrecer a sus asociados servicios complementarios tales como seguros, asistencia médica, descuentos en comercios, turismo, tecnología, asistencia al hogar y cualquier otro que el Consejo Directivo resuelva incorporar.</p>
+    <p>Los servicios y beneficios se irán habilitando de forma progresiva según los acuerdos vigentes con cada organización. No todos los servicios estarán disponibles simultáneamente para todos los grupos de asociados. Las condiciones particulares de cada servicio serán informadas al momento de su contratación o activación.</p>
+    <p>MUTUAL ISAR actúa como intermediaria y/o gestora de los beneficios provistos por terceros. En tales casos, la responsabilidad por la prestación efectiva del servicio recae sobre el proveedor correspondiente, aplicándose los términos y condiciones que cada proveedor establezca.</p>
+  </div>
+
+  <!-- 8 -->
+  <div class="legal-section" id="s8">
+    <h2>8. Acuerdos institucionales</h2>
+    <p>MUTUAL ISAR celebra acuerdos con organismos públicos y entidades privadas a efectos de habilitar el acceso de sus empleados o integrantes a las prestaciones mutuales. Estos acuerdos determinan el alcance de las prestaciones disponibles para cada grupo, las modalidades de descuento, y los compromisos de las partes.</p>
+    <p>El asociado reconoce que la vigencia y las condiciones de las prestaciones están sujetas a la continuidad del acuerdo institucional entre la Mutual y la organización empleadora. En caso de extinción del acuerdo, la Mutual informará a los asociados afectados las alternativas disponibles para la continuidad de sus prestaciones y la regularización de obligaciones pendientes.</p>
+  </div>
+
+  <!-- 9 -->
+  <div class="legal-section" id="s9">
+    <h2>9. Código de descuento en haberes</h2>
+    <p>El asociado autoriza expresamente a MUTUAL ISAR a gestionar ante su empleador la retención de las cuotas correspondientes a la cuota social, ayudas económicas y/o servicios contratados, directamente de sus haberes mensuales, mediante el código de descuento asignado.</p>
+    <p>La autorización de descuento se formaliza al momento de la asociación y/o la contratación de cada prestación, y permanecerá vigente hasta la total cancelación de las obligaciones contraídas. La revocación de la autorización de descuento no extingue la obligación de pago, debiendo el asociado continuar abonando las cuotas por medios alternativos.</p>
+  </div>
+
+  <!-- 10 -->
+  <div class="legal-section" id="s10">
+    <h2>10. Derechos del asociado</h2>
+    <p>Todo asociado en pleno goce de sus derechos tendrá:</p>
+    <ul>
+      <li>Derecho a acceder a las prestaciones y servicios de la Mutual conforme a las condiciones vigentes.</li>
+      <li>Derecho a solicitar información clara y detallada sobre las condiciones de las ayudas económicas antes de su aceptación.</li>
+      <li>Derecho a participar en las Asambleas y a elegir y ser elegido para los órganos de conducción, conforme al Estatuto Social.</li>
+      <li>Derecho a solicitar la baja voluntaria de la Mutual en cualquier momento, sujeto a la regularización de obligaciones pendientes.</li>
+      <li>Derecho a presentar reclamos, consultas y sugerencias ante la Mutual.</li>
+      <li>Derecho a la protección de sus datos personales conforme a la legislación vigente.</li>
+      <li>Derecho a obtener la cancelación anticipada de sus ayudas económicas sin penalidades.</li>
+    </ul>
+  </div>
+
+  <!-- 11 -->
+  <div class="legal-section" id="s11">
+    <h2>11. Obligaciones del asociado</h2>
+    <p>El asociado se compromete a:</p>
+    <ul>
+      <li>Abonar puntualmente la cuota social y las cuotas correspondientes a las prestaciones contratadas.</li>
+      <li>Mantener actualizados sus datos personales y de contacto ante la Mutual.</li>
+      <li>Informar a la Mutual cualquier cambio en su situación laboral que pueda afectar el mecanismo de descuento en haberes (renuncia, despido, licencia prolongada, jubilación, etc.).</li>
+      <li>Proporcionar información veraz y completa al solicitar prestaciones.</li>
+      <li>Cumplir con el Estatuto Social, el Reglamento Interno y las resoluciones de los órganos de la Mutual.</li>
+      <li>Hacer uso responsable de las prestaciones y servicios otorgados.</li>
+      <li>No ceder ni transferir a terceros los derechos derivados de su condición de asociado.</li>
+    </ul>
+  </div>
+
+  <!-- 12 -->
+  <div class="legal-section" id="s12">
+    <h2>12. Mora e incumplimiento</h2>
+    <p>En caso de falta de pago de las cuotas correspondientes a ayudas económicas, el asociado incurrirá en mora de pleno derecho, sin necesidad de interpelación judicial o extrajudicial alguna. La mora devengará intereses punitorios sobre el monto adeudado, a la tasa que la Mutual tenga vigente al momento del incumplimiento.</p>
+    <p>MUTUAL ISAR podrá iniciar las acciones de cobro que considere pertinentes, por vía extrajudicial o judicial, siendo a cargo del asociado moroso los gastos, costas y honorarios que dichas gestiones generen.</p>
+    <p>La mora persistente podrá dar lugar a la suspensión del acceso a nuevas prestaciones y, eventualmente, a la exclusión del asociado conforme al procedimiento estatutario.</p>
+  </div>
+
+  <!-- 13 -->
+  <div class="legal-section" id="s13">
+    <h2>13. Baja y desvinculación</h2>
+    <h3>13.1. Baja voluntaria</h3>
+    <p>El asociado podrá solicitar la baja voluntaria de MUTUAL ISAR en cualquier momento, mediante comunicación fehaciente dirigida a la Mutual. La baja quedará sujeta a la cancelación previa de todas las obligaciones económicas pendientes.</p>
+    <h3>13.2. Exclusión</h3>
+    <p>El Consejo Directivo podrá resolver la exclusión de un asociado por las causales previstas en el Estatuto Social, incluyendo pero no limitándose a: incumplimiento reiterado de obligaciones, conducta que perjudique los intereses de la Mutual, y/o provisión de información falsa o adulterada. Se garantiza el derecho de defensa del asociado conforme al procedimiento estatutario.</p>
+    <h3>13.3. Efectos de la baja</h3>
+    <p>La baja o exclusión no extingue las obligaciones económicas pendientes del asociado, las cuales deberán ser canceladas en su totalidad conforme a las condiciones originalmente pactadas.</p>
+  </div>
+
+  <!-- 14 -->
+  <div class="legal-section" id="s14">
+    <h2>14. Protección de datos personales</h2>
+    <div class="legal-highlight">
+      <p>MUTUAL ISAR se compromete a proteger los datos personales de sus asociados y usuarios conforme a la Ley N.º 25.326 de Protección de Datos Personales y su normativa complementaria.</p>
+    </div>
+    <p>Los datos personales recabados serán utilizados exclusivamente para los fines vinculados a la gestión de la relación mutual, el otorgamiento de prestaciones, la comunicación institucional y el cumplimiento de obligaciones legales y regulatorias.</p>
+    <p>MUTUAL ISAR no cederá ni comercializará datos personales de sus asociados a terceros, salvo cuando sea estrictamente necesario para la prestación de un servicio contratado por el asociado, cuando medie consentimiento expreso, o cuando sea requerido por autoridad competente.</p>
+    <p>El titular de los datos podrá ejercer los derechos de acceso, rectificación, actualización y supresión de sus datos personales comunicándose a <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="99f0f7fff6d9f4ecedecf8f5f0eaf8ebb7faf6f4">[email&#160;protected]</a>. La Dirección Nacional de Protección de Datos Personales (Órgano de Control de la Ley N.° 25.326) tiene la atribución de atender las denuncias y reclamos que se interpongan con relación al incumplimiento de las normas sobre protección de datos personales.</p>
+  </div>
+
+  <!-- 15 -->
+  <div class="legal-section" id="s15">
+    <h2>15. Propiedad intelectual</h2>
+    <p>Todos los contenidos del Sitio, incluyendo pero no limitándose a textos, gráficos, logotipos, íconos, imágenes, diseños, marcas y software, son propiedad de MUTUAL ISAR o de sus licenciantes, y se encuentran protegidos por las leyes de propiedad intelectual e industrial aplicables.</p>
+    <p>Queda prohibida la reproducción, distribución, modificación, transmisión o uso de cualquier contenido del Sitio sin autorización previa y escrita de MUTUAL ISAR.</p>
+  </div>
+
+  <!-- 16 -->
+  <div class="legal-section" id="s16">
+    <h2>16. Uso del sitio web</h2>
+    <p>El usuario se compromete a utilizar el Sitio de conformidad con la ley, la moral, el orden público y los presentes Términos. Queda prohibido el uso del Sitio con fines ilícitos, lesivos de derechos de terceros, o que de cualquier forma puedan dañar, inutilizar o deteriorar el Sitio o impedir su normal utilización.</p>
+    <p>El Sitio puede contener enlaces a sitios web de terceros. MUTUAL ISAR no se responsabiliza por el contenido, las políticas de privacidad ni las prácticas de dichos sitios.</p>
+  </div>
+
+  <!-- 17 -->
+  <div class="legal-section" id="s17">
+    <h2>17. Limitación de responsabilidad</h2>
+    <p>MUTUAL ISAR no será responsable por daños o perjuicios derivados de interrupciones, demoras o errores en el funcionamiento del Sitio, ni por la imposibilidad de acceder al mismo por causas ajenas a su voluntad, incluyendo fallas técnicas, de conectividad o de infraestructura.</p>
+    <p>La Mutual no garantiza la disponibilidad ininterrumpida del Sitio y se reserva el derecho de suspender temporalmente el acceso por razones de mantenimiento, actualización o mejora.</p>
+  </div>
+
+  <!-- 18 -->
+  <div class="legal-section" id="s18">
+    <h2>18. Modificaciones</h2>
+    <p>MUTUAL ISAR se reserva el derecho de modificar los presentes Términos en cualquier momento, publicando la versión actualizada en el Sitio. Las modificaciones entrarán en vigencia a partir de su publicación. El uso continuado del Sitio o de los servicios de la Mutual con posterioridad a la publicación de las modificaciones implicará la aceptación de los nuevos Términos.</p>
+    <p>En caso de modificaciones sustanciales que afecten los derechos de los asociados, la Mutual procurará comunicarlas por los medios habituales de contacto con una antelación razonable.</p>
+  </div>
+
+  <!-- 19 -->
+  <div class="legal-section" id="s19">
+    <h2>19. Legislación aplicable y jurisdicción</h2>
+    <p>Los presentes Términos se rigen por las leyes de la República Argentina. Para cualquier controversia derivada de la interpretación o aplicación de estos Términos, las partes se someten a la jurisdicción de los Tribunales Ordinarios de la Ciudad Autónoma de Buenos Aires, renunciando a cualquier otro fuero o jurisdicción que pudiera corresponderles.</p>
+  </div>
+
+  <!-- 20 -->
+  <div class="legal-section" id="s20">
+    <h2>20. Contacto</h2>
+    <p>Para cualquier consulta, reclamo o solicitud vinculada a los presentes Términos y Condiciones, el asociado o usuario podrá contactarse con MUTUAL ISAR a través de los siguientes canales:</p>
+    <ul>
+      <li><strong>Correo electrónico:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e68f888089a68b939293878a8f958794c885898b">[email&#160;protected]</a></li>
+      <li><strong>WhatsApp:</strong> +54 9 11 
