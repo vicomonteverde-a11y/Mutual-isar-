@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUTUAL ISAR - Integración Solidaria de Ayuda Recíproca</title>
+<meta name="description" content="MUTUAL ISAR - Ayudas económicas y servicios para nuestros asociados. Más de 25 años acompañando a nuestros socios con préstamos accesibles y beneficios exclusivos.">
+<meta property="og:title" content="MUTUAL ISAR - Integración Solidaria de Ayuda Recíproca">
+<meta property="og:description" content="Ayudas económicas y servicios exclusivos para nuestros asociados. Más de 25 años de trayectoria.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mutualisar.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: #1a2332;
+  background: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  --navy: #1a5276;
+  --navy-light: #2471a3;
+  --teal: #17a8a0;
+  --teal-light: #1dd3c6;
+  --teal-bg: #e8faf9;
+  --gold: #d4a853;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+  --white: #ffffff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { border: none; cursor: pointer; font-family: inherit; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+.animate-on-scroll { opacity: 0; transform: translate3d(0, 30px, 0); transition: opacity 0.6s ease, transform 0.6s ease; }
+.animate-on-scroll.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+/* ===== NAVBAR ===== */
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); border-bottom: 1px solid rgba(0,0,0,0.06); transition: box-shadow 0.2s ease; will-change: transform; }
+.navbar.scrolled { box-shadow: var(--shadow-md); }
+.navbar-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.navbar-logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.25rem; color: var(--navy); }
+.navbar-logo .logo-mark { width: 42px; height: 42px; background: linear-gradient(135deg, var(--navy), var(--teal)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; }
+.navbar-logo span { color: var(--teal); font-weight: 500; }
+.nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+.nav-links a { padding: 8px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; color: var(--gray-600); transition: var(--transition); }
+.nav-links a:hover { color: var(--navy); background: var(--gray-100); }
+.nav-cta { background: var(--teal) !important; color: white !important; padding: 10px 22px !important; border-radius: 10px !important; font-weight: 600 !important; transition: var(--transition) !important; }
+.nav-cta:hover { background: var(--teal-light) !important; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(23,168,160,0.3); }
+.menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; padding: 8px; }
+.menu-toggle span { display: block; width: 24px; height: 2.5px; background: var(--navy); border-radius: 2px; transition: var(--transition); }
+.menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ===== HERO ===== */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding-top: 76px; background: linear-gradient(165deg, var(--navy) 0%, var(--navy-light) 55%, var(--teal) 100%); overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(23,168,160,0.15) 0%, transparent 70%); border-radius: 50%; }
+.hero::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(212,168,83,0.08) 0%, transparent 70%); border-radius: 50%; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+.hero-content { animation: slideInLeft 0.8s ease; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.15); padding: 8px 18px; border-radius: 50px; color: var(--teal-light); font-size: 0.85rem; font-weight: 500; margin-bottom: 28px; }
+.hero-badge svg { width: 16px; height: 16px; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 600; color: var(--white); line-height: 1.15; margin-bottom: 24px; }
+.hero h1 em { font-style: normal; color: var(--teal-light); }
+.hero p { font-size: 1.15rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 36px; max-width: 520px; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 30px; border-radius: 12px; font-size: 1rem; font-weight: 600; transition: var(--transition); }
+.btn-primary { background: var(--teal); color: white; }
+.btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(23,168,160,0.35); }
+.btn-outline { background: rgba(255,255,255,0.08); color: white; border: 1.5px solid rgba(255,255,255,0.25); }
+.btn-outline:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
+.btn svg { width: 20px; height: 20px; }
+.hero-visual { position: relative; animation: fadeIn 1s ease 0.3s both; }
+.hero-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-lg); padding: 40px; }
+.hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.stat-item { text-align: center; padding: 24px 16px; background: rgba(255,255,255,0.06); border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.08); transition: var(--transition); }
+.stat-item:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+.stat-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--teal-light); line-height: 1; margin-bottom: 6px; }
+.stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); font-weight: 500; }
+
+/* ===== TRUST BAR ===== */
+.trust-bar { background: var(--gray-50); border-bottom: 1px solid var(--gray-200); padding: 20px 0; }
+.trust-bar-inner { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 10px; color: var(--gray-500); font-size: 0.9rem; font-weight: 500; }
+.trust-item svg { width: 20px; height: 20px; color: var(--teal); }
+
+/* ===== SECTION COMMON ===== */
+.section { padding: 100px 0; }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--teal-bg); color: var(--teal); padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 600; color: var(--navy); margin-bottom: 16px; line-height: 1.2; }
+.section-subtitle { font-size: 1.1rem; color: var(--gray-500); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+/* ===== ABOUT ===== */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-content h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--navy); margin-bottom: 20px; line-height: 1.25; }
+.about-content p { color: var(--gray-600); font-size: 1.05rem; line-height: 1.8; margin-bottom: 16px; }
+.about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+.about-feature { display: flex; align-items: flex-start; gap: 12px; padding: 16px; border-radius: var(--radius); background: var(--gray-50); border: 1px solid var(--gray-200); transition: var(--transition); }
+.about-feature:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); }
+.about-feature-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--teal-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--teal); }
+.about-feature-icon svg { width: 20px; height: 20px; }
+.about-feature h4 { font-size: 0.9rem; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+.about-feature p { font-size: 0.8rem; color: var(--gray-500); margin-bottom: 0; line-height: 1.5; }
+.about-image-wrapper { background: linear-gradient(135deg, var(--navy), var(--teal)); border-radius: var(--radius-lg); padding: 40px; position: relative; overflow: hidden; }
+.about-image-wrapper::before { content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); }
+.about-big-number { font-family: 'Playfair Display', serif; font-size: 6rem; font-weight: 700; color: rgba(255,255,255,0.1); line-height: 1; margin-bottom: 20px; }
+.about-quote { font-size: 1.3rem; color: var(--white); font-weight: 500; line-height: 1.5; margin-bottom: 8px; }
+.about-quote-author { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+
+/* ===== AYUDAS ECONOMICAS ===== */
+.ayudas-section { background: var(--gray-50); }
+.acuerdos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; }
+.acuerdo-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--gray-200); overflow: hidden; transition: var(--transition); }
+.acuerdo-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--teal); }
+.acuerdo-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 28px 28px 24px; position: relative; overflow: hidden; }
+.acuerdo-header::after { content: ''; position: absolute; top: 0; right: 0; width: 120px; height: 120px; background: radial-gradient(circle, rgba(23,168,160,0.2) 0%, transparent 70%); border-radius: 50%; transform: translate(30%, -30%); }
+.acuerdo-org-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; margin-bottom: 14px; }
+.acuerdo-org-badge svg { width: 16px; height: 16px; color: var(--teal-light); }
+.acuerdo-org-badge span { font-size: 0.78rem; color: rgba(255,255,255,0.8); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+.acuerdo-header h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: white; font-weight: 600; line-height: 1.3; position: relative; z-index: 2; }
+.acuerdo-body { padding: 28px; }
+.acuerdo-body p { color: var(--gray-600); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
+.acuerdo-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.acuerdo-features li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--gray-700); }
+.acuerdo-features li svg { width: 18px; height: 18px; color: var(--teal); flex-shrink: 0; }
+.acuerdo-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--teal); color: white; padding: 12px 24px; border-radius: 10px; font-size: 0.9rem; font-weight: 600; transition: var(--transition); width: 100%; justify-content: center; }
+.acuerdo-cta:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(23,168,160,0.3); }
+.acuerdo-cta svg { width: 18px; height: 18px; }
+.acuerdo-card.coming-soon { border-style: dashed; border-color: var(--gray-300); }
+.acuerdo-card.coming-soon .acuerdo-header { background: linear-gradient(135deg, var(--gray-600), var(--gray-500)); }
+.acuerdo-card.coming-soon:hover { border-color: var(--gray-400); }
+
+/* ===== CÓMO FUNCIONA ===== */
+.how-section { background: var(--gray-50); }
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; position: relative; }
+.steps-grid::before { content: ''; position: absolute; top: 48px; left: 16.66%; right: 16.66%; height: 2px; background: linear-gradient(90deg, var(--teal), var(--gray-300)); z-index: 0; }
+.step-card { text-align: center; position: relative; z-index: 1; }
+.step-number { width: 64px; height: 64px; background: var(--white); border: 3px solid var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--teal); margin: 0 auto 20px; }
+.step-card h4 { font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+.step-card p { color: var(--gray-500); font-size: 0.92rem; line-height: 1.6; max-width: 280px; margin: 0 auto; }
+
+/* ===== SERVICIOS ===== */
+.servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.servicio-card { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 32px; text-align: center; transition: var(--transition); }
+.servicio-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--teal); }
+.servicio-icon { width: 56px; height: 56px; background: var(--teal-bg); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; color: var(--teal); }
+.servicio-icon svg { width: 26px; height: 26px; }
+.servicio-card h4 { font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+.servicio-card p { color: var(--gray-500); font-size: 0.88rem; line-height: 1.6; }
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.testimonial-card { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 32px; transition: var(--transition); position: relative; }
+.testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.testimonial-card::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--teal); opacity: 0.2; position: absolute; top: 16px; left: 28px; line-height: 1; }
+.testimonial-text { font-size: 0.95rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 20px; position: relative; z-index: 1; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--navy)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 0.85rem; }
+.testimonial-name { font-weight: 600; color: var(--navy); font-size: 0.92rem; }
+.testimonial-role { color: var(--gray-400); font-size: 0.8rem; }
+
+/* ===== CTA ===== */
+.cta-section { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--teal) 100%); padding: 80px 0; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; top: -60%; right: -20%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(23,168,160,0.15) 0%, transparent 70%); border-radius: 50%; }
+.cta-content { text-align: center; position: relative; z-index: 2; }
+.cta-content h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: white; margin-bottom: 16px; }
+.cta-content p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 36px; max-width: 550px; margin-left: auto; margin-right: auto; }
+.cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-whatsapp { background: #25d366; color: white; }
+.btn-whatsapp:hover { background: #22c55e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.35); }
+
+/* ===== FOOTER ===== */
+.footer { background: var(--gray-900); color: var(--gray-400); padding: 60px 0 30px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-brand p { font-size: 0.9rem; line-height: 1.7; margin-top: 16px; max-width: 300px; }
+.footer h4 { color: var(--white); font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { color: var(--gray-400); font-size: 0.88rem; transition: var(--transition); }
+.footer-links a:hover { color: var(--teal-light); }
+.footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.88rem; }
+.footer-contact-item svg { width: 18px; height: 18px; color: var(--teal); flex-shrink: 0; margin-top: 2px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; flex-wrap: wrap; gap: 12px; }
+.footer-bottom a { color: var(--gray-400); transition: var(--transition); }
+.footer-bottom a:hover { color: var(--teal-light); }
+.footer-legal { display: flex; gap: 24px; }
+.footer-social { display: flex; gap: 12px; margin-top: 16px; }
+.social-link { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: var(--gray-400); transition: var(--transition); }
+.social-link:hover { background: var(--teal); border-color: var(--teal); color: white; }
+.social-link svg { width: 18px; height: 18px; }
+
+/* ===== WHATSAPP FLOATING ===== */
+.whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: var(--transition); animation: float 3s ease-in-out infinite; }
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); animation: none; }
+.whatsapp-float svg { width: 32px; height: 32px; fill: white; }
+
+/* ===== MOBILE MENU ===== */
+.mobile-menu { display: none; position: fixed; top: 76px; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.99); z-index: 999; padding: 32px 24px; flex-direction: column; gap: 8px; animation: fadeIn 0.25s ease; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { display: block; padding: 14px 20px; border-radius: 12px; font-size: 1.05rem; font-weight: 500; color: var(--gray-700); transition: var(--transition); }
+.mobile-menu a:hover { background: var(--gray-100); color: var(--navy); }
+.mobile-menu .nav-cta-mobile { background: var(--teal); color: white; text-align: center; font-weight: 600; margin-top: 16px; border-radius: 12px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 2.8rem; }
+  .hero-grid { gap: 40px; }
+  .about-grid { gap: 40px; }
+  .section-title { font-size: 2.2rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: flex; }
+  .hero { min-height: auto; padding: 120px 0 60px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero p { font-size: 1rem; }
+  .hero-buttons { flex-direction: column; }
+  .hero-buttons .btn { justify-content: center; }
+  .stat-number { font-size: 2rem; }
+  .section { padding: 60px 0; }
+  .section-title { font-size: 1.8rem; }
+  .section-subtitle { font-size: 1rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-features { grid-template-columns: 1fr; }
+  .about-visual { order: -1; }
+  .acuerdos-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; gap: 40px; }
+  .steps-grid::before { display: none; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .servicios-grid { grid-template-columns: 1fr 1fr; }
+  .cta-content h2 { font-size: 1.8rem; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-legal { justify-content: center; }
+  .trust-bar-inner { gap: 20px; }
+  .trust-item { font-size: 0.8rem; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.8rem; }
+  .hero-stats { gap: 12px; }
+  .stat-number { font-size: 1.6rem; }
+  .servicios-grid { grid-template-columns: 1fr; }
+  .container { padding: 0 16px; }
+  .about-big-number { font-size: 4rem; }
+  .whatsapp-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
+  .whatsapp-float svg { width: 28px; height: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="#" class="navbar-logo"><div class="logo-mark">ISAR</div>MUTUAL <span>ISAR</span></a>
+    <ul class="nav-links">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#ayudas">Ayudas económicas</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#como-funciona">¿Cómo funciona?</a></li>
+      <li><a href="https://wa.me/5491134464698?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20MUTUAL%20ISAR" target="_blank" class="nav-cta">Contactanos</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#ayudas" onclick="closeMobile()">Ayudas económicas</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#como-funciona" onclick="closeMobile()">¿Cómo funciona?</a>
+  <a href="https://wa.me/5491134464698?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20MUTUAL%20ISAR" target="_blank" class="nav-cta-mobile" onclick="closeMobile()">Contactanos por WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Más de 25 años de trayectoria</div>
+        <h1>Tu bienestar, nuestra <em>prioridad</em></h1>
+        <p>Desde ISAR trabajamos para mejorar la calidad de vida de nuestros asociados y sus familias, ofreciendo ayudas económicas, beneficios y soluciones prácticas en todo el país.</p>
+        <div class="hero-buttons">
+          <a href="#ayudas" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 100 4h4a2 2 0 110 4H8"/><path d="M12 18V6"/></svg>Ver ayudas económicas</a>
+          <a href="https://wa.me/5491134464698?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20MUTUAL%20ISAR" target="_blank" class="btn btn-outline"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.783-1.278A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.332-1.543l-.377-.227-2.833.757.714-2.672-.253-.393A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>Escribinos por WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-stats">
+            <div class="stat-item"><div class="stat-number">+3.000</div><div class="stat-label">Asociados</div></div>
+            <div class="stat-item"><div class="stat-number">+25</div><div class="stat-label">Años de experiencia</div></div>
+            <div class="stat-item"><div class="stat-number">+10.000</div><div class="stat-label">Préstamos otorgados</div></div>
+            <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Online y ágil</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Entidad regulada</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Código de descuento en haberes</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Respuesta rápida</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Alcance nacional</div>
+    </div>
+  </div>
+</div>
+
+<!-- NOSOTROS -->
+<section class="section" id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content animate-on-scroll">
+        <div class="section-tag">Quiénes somos</div>
+        <h2>Integración Solidaria de Ayuda Recíproca</h2>
+        <p>Hace más de 25 años que trabajamos para fortalecer el bienestar de nuestros asociados y sus familias. Cada día aportamos soluciones prácticas y efectivas, enfocadas en mejorar su calidad de vida.</p>
+        <p>Nuestro compromiso es expandir y optimizar nuestros servicios para llegar a cada rincón del país, ofreciendo asistencia y beneficios en todas las comunidades.</p>
+        <div class="about-features">
+          <div class="about-feature"><div class="about-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 100 4h4a2 2 0 110 4H8"/><path d="M12 18V6"/></svg></div><div><h4>Ayudas económicas</h4><p>Préstamos accesibles con descuento en haberes</p></div></div>
+          <div class="about-feature"><div class="about-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div><h4>Servicios exclusivos</h4><p>Beneficios y descuentos para socios</p></div></div>
+          <div class="about-feature"><div class="about-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><div><h4>Acuerdos institucionales</h4><p>Convenios con organizaciones públicas y privadas</p></div></div>
+          <div class="about-feature"><div class="about-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>Confianza y solidez</h4><p>Más de 25 años de trayectoria comprobada</p></div></div>
+        </div>
+      </div>
+      <div class="about-visual animate-on-scroll">
+        <div class="about-image-wrapper">
+          <div class="about-big-number">25+</div>
+          <div class="about-quote">Acompañando a nuestros asociados con soluciones reales, en cada etapa de la vida.</div>
+          <div class="about-quote-author">— MUTUAL ISAR</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AYUDAS ECONÓMICAS -->
+<section class="section ayudas-section" id="ayudas">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 100 4h4a2 2 0 110 4H8"/><path d="M12 18V6"/></svg>Ayudas económicas</div>
+      <h2 class="section-title">Préstamos para nuestros asociados</h2>
+      <p class="section-subtitle">Accedé a ayudas económicas a través de los acuerdos que ISAR mantiene con organizaciones de todo el país. Descuento directo por código en tus haberes.</p>
+    </div>
+    <div class="acuerdos-grid">
+      <!-- GCBA -->
+      <div class="acuerdo-card animate-on-scroll">
+        <div class="acuerdo-header"><div class="acuerdo-org-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg><span>Acuerdo vigente</span></div><h3>Empleados del Gobierno de la Ciudad de Buenos Aires</h3></div>
+        <div class="acuerdo-body">
+          <p>Ayudas económicas exclusivas para empleados activos del GCBA, con descuento directo por código en haberes.</p>
+          <ul class="acuerdo-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Préstamos personales</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Descuento en haberes por código</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Proceso ágil y 100% online</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Asesoramiento personalizado</li>
+          </ul>
+          <a href="https://wa.me/5491134464698?text=Hola%2C%20soy%20empleado%20de%20GCBA%20y%20quiero%20info%20sobre%20ayudas%20econ%C3%B3micas" target="_blank" class="acuerdo-cta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.783-1.278A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.332-1.543l-.377-.227-2.833.757.714-2.672-.253-.393A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>Consultar por WhatsApp</a>
+        </div>
+      </div>
+      <!-- CHUBUT -->
+      <div class="acuerdo-card animate-on-scroll">
+        <div class="acuerdo-header"><div class="acuerdo-org-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg><span>Acuerdo vigente</span></div><h3>Empleados del Gobierno de la Provincia de Chubut</h3></div>
+        <div class="acuerdo-body">
+          <p>Ayudas económicas para empleados activos del Gobierno de Chubut, con descuento automático en haberes.</p>
+          <ul class="acuerdo-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Préstamos personales</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Descuento en haberes por código</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Proceso ágil y 100% online</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Asesoramiento personalizado</li>
+          </ul>
+          <a href="https://wa.me/5492804213309?text=Hola%2C%20soy%20empleado%20de%20Gobierno%20de%20Chubut%20y%20quiero%20info%20sobre%20ayudas%20econ%C3%B3micas" target="_blank" class="acuerdo-cta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.783-1.278A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.332-1.543l-.377-.227-2.833.757.714-2.672-.253-.393A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>Consultar por WhatsApp</a>
+        </div>
+      </div>
+      <!-- PRÓXIMAMENTE -->
+      <div class="acuerdo-card coming-soon animate-on-scroll">
+        <div class="acuerdo-header"><div class="acuerdo-org-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Próximamente</span></div><h3>Nuevos acuerdos en desarrollo</h3></div>
+        <div class="acuerdo-body">
+          <p>Estamos trabajando en nuevos convenios con organizaciones de todo el país. Pronto vamos a sumar más opciones de ayudas económicas para más grupos de asociados.</p>
+          <ul class="acuerdo-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Nuevas provincias y organismos</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Más opciones de financiamiento</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Condiciones exclusivas</li>
+          </ul>
+          <a href="https://wa.me/5491134464698?text=Hola%2C%20quiero%20info%20sobre%20futuros%20acuerdos%20de%20MUTUAL%20ISAR" target="_blank" class="acuerdo-cta" style="background:var(--gray-600);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.783-1.278A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.332-1.543l-.377-.227-2.833.757.714-2.672-.253-.393A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>Dejanos tu consulta</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="section how-section" id="como-funciona">
+  <div class="container">
+    <div class="section-header animate-on-scroll"><div class="section-tag">Proceso simple</div><h2 class="section-title">¿Cómo accedo a una ayuda económica?</h2><p class="section-subtitle">Un proceso sencillo, rápido y transparente para que accedas a tu préstamo sin complicaciones.</p></div>
+    <div class="steps-grid">
+      <div class="step-card animate-on-scroll"><div class="step-number">1</div><h4>Consultanos</h4><p>Escribinos por WhatsApp o contactanos para saber si tu organización tiene acuerdo con ISAR.</p></div>
+      <div class="step-card animate-on-scroll"><div class="step-number">2</div><h4>Evaluación rápida</h4><p>Revisamos tu caso de forma personalizada y te informamos las condiciones y montos disponibles.</p></div>
+      <div class="step-card animate-on-scroll"><div class="step-number">3</div><h4>Recibí tu ayuda</h4><p>Una vez aprobado, acreditamos el préstamo y se descuenta cómodamente de tus haberes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <div class="container">
+    <div class="section-header animate-on-scroll"><div class="section-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>Servicios</div><h2 class="section-title">Servicios exclusivos para asociados</h2><p class="section-subtitle">Además de ayudas económicas, estamos desarrollando un abanico de servicios y descuentos exclusivos para nuestros asociados, organizados por acuerdo institucional.</p></div>
+    <div class="servicios-grid animate-on-scroll">
+      <div class="servicio-card"><div class="servicio-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Seguros</h4><p>Seguros personales y patrimoniales con condiciones preferenciales.</p></div>
+
+      <div class="servicio-card"><div class="servicio-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><h4>Descuentos en comercios</h4><p>Acuerdos con comercios y marcas para beneficios exclusivos.</p></div>
+
+      <div class="servicio-card"><div class="servicio-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h4>Turismo</h4><p>Descuentos en paquetes y servicios turísticos nacionales e internacionales.</p></div>
+      <div class="servicio-card"><div class="servicio-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div><h4>Tecnología</h4><p>Descuentos en productos tecnológicos y electrónica.</p></div>
+    </div>
+    <div style="text-align:center; margin-top: 48px;" class="animate-on-scroll">
+      <p style="color: var(--gray-500); font-size: 0.95rem; margin-bottom: 20px;">Los servicios se van habilitando progresivamente según cada acuerdo institucional. ¿Querés saber qué servicios están disponibles para tu organización?</p>
+      <a href="https://wa.me/5491134464698?text=Hola%2C%20quiero%20info%20sobre%20los%20servicios%20de%20MUTUAL%20ISAR" target="_blank" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.783-1.278A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.332-1.543l-.377-.227-2.833.757.714-2.672-.253-.393A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>Consultanos por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header animate-on-scroll"><div class="section-tag">Testimonios</div><h2 class="section-title">Lo que dicen nuestros asociados</h2></div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card animate-on-scroll"><p class="testimonial-text">Excelente atención y siempre cumplen con lo que prometen. Muy confiable y rápido todo el proceso.</p><div class="testimonial-author"><div class="testimonial-avatar">SV</div><div><div class="testimonial-name">Santiago Vilez</div><div class="testimonial-role">Asociado ISAR</div></div></div></div>
+      <div class="testimonial-card animate-on-scroll"><p class="testimonial-text">Me ayudaron justo cuando lo necesitaba. Todo rápido y sin vueltas. El descuento por código es súper cómodo.</p><div class="testimonial-author"><div class="testimonial-avatar">MN</div><div><div class="testimonial-name">Martín Novoa</div><div class="testimonial-role">Asociado ISAR</div></div></div></div>
+      <div class="testimonial-card animate-on-scroll"><p class="testimonial-text">Muy buena experiencia, se nota que se preocupan por los socios. Recomiendo ISAR sin dudas.</p><div class="testimonial-author"><div class="testimonial-avatar">AD</div><div><div class="testimonial-name">Agustina Damonte</div><div class="testimonial-role">Asociada ISAR</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content animate-on-scroll">
+      <h2>¿Querés saber más sobre MUTUAL ISAR?</h2>
+      <p>Escribinos y te asesoramos sobre las ayudas económicas y servicios disponibles para tu organización.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/5491134464698?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20MUTUAL%20ISAR" target="_blank" class="btn btn-whatsapp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.783-1.278A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.332-1.543l-.377-.227-2.833.757.714-2.672-.253-.393A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>Escribinos por WhatsApp</a>
+        <a href="mailto:info@mutualisar.com" class="btn btn-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@mutualisar.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="navbar-logo" style="margin-bottom:8px;"><div class="logo-mark">ISAR</div>MUTUAL <span>ISAR</span></a>
+        <p>Integración Solidaria de Ayuda Recíproca. Hace más de 25 años trabajando para el bienestar de nuestros asociados y sus familias en todo el país.</p>
+      </div>
+      <div><h4>Navegación</h4><ul class="footer-links"><li><a href="#nosotros">Nosotros</a></li><li><a href="#ayudas">Ayudas económicas</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#como-funciona">¿Cómo funciona?</a></li></ul></div>
+      <div><h4>Acuerdos vigentes</h4><ul class="footer-links"><li><a href="#ayudas">Gob. Ciudad de Buenos Aires</a></li><li><a href="#ayudas">Gob. de Chubut</a></li></ul></div>
+      <div><h4>Contacto</h4>
+        <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Av. Córdoba 890, 5to piso<br>Ciudad de Buenos Aires</span></div>
+        <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@mutualisar.com" style="color:var(--teal-light);">info@mutualisar.com</a></div>
+        <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="https://wa.me/5491134464698" target="_blank" style="color:var(--teal-light);">+54 9 11 3446-4698</a></div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/mutual.isar" target="_blank" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61580846087131" target="_blank" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 MUTUAL ISAR. Todos los derechos reservados.</span>
+      <div class="footer-legal">
+        <a href="/terminos-y-condiciones">Términos y condiciones</a>
+        <a href="/terminos-y-condiciones">Política de privacidad</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5491134464698?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20MUTUAL%20ISAR" target="_blank" class="whatsapp-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.783-1.278A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.332-1.543l-.377-.227-2.833.757.714-2.672-.253-.393A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg></a>
+
+<script>
+// Navbar scroll - passive + rAF for performance
+const navbar = document.getElementById('navbar');
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) { requestAnimationFrame(() => { navbar.classList.toggle('scrolled', window.scrollY > 50); ticking = false; }); ticking = true; }
+}, { passive: true });
+// Mobile menu
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); mobileMenu.classList.toggle('open'); document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : ''; });
+function closeMobile() { menuToggle.classList.remove('active'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+// Scroll animations
+const observer = new IntersectionObserver((entries) => { entries.forEach((entry, i) => { if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 80); observer.unobserve(entry.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function(e) { e.preventDefault(); const t = document.querySelector(this.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth' }); }); });
+</script>
+</body>
+</html>
